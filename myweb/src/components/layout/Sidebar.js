@@ -47,8 +47,8 @@ const Sidebar = () => {
                                 <input
                                     className="form-control mb-2 mr-sm-2"
                                     type="text"
-                                    id="username"
-                                    name="username"
+                                    id="content"
+                                    name="content"
                                     value={filters.content}
                                     onChange={handleChange}
                                     placeholder="Tìm theo nội dung"
@@ -89,7 +89,7 @@ const Sidebar = () => {
                         <ul>
                             {filteredData.map((post) => (
                                 <li key={post.id}>
-                                    <Link to={`/home/detail/${post.id}`}>{post.title}</Link>
+                                    <Link to={`/home/detail/${post.id}`} style={{textDecoration: "none"}}>{post.title}</Link>
                                 </li>
                             ))}
                         </ul>

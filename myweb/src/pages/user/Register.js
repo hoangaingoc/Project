@@ -65,7 +65,7 @@ export default function Register() {
                                                         </div>
                                                         <div data-mdb-input-init className="form-outline mb-4">
                                                             <label className="form-label"
-                                                                   htmlFor="form3Example4">DOB</label>
+                                                                   htmlFor="form3Example4">Brithday</label>
                                                             <Field type="date" id="form3Example4"
                                                                    class="form-control"
                                                                    name={'dob'}/>

@@ -71,7 +71,7 @@ export default function AddBlog() {
                                 </Field>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="content">Content</label>
+                                <label htmlFor="content">Nội dung</label>
                                 <EditorToolbar/>
                                 <ReactQuill
                                     value={values.content}

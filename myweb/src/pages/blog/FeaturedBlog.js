@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Carousel } from 'react-bootstrap';
-import { MyContext } from "../../MyContext"; // Assuming you're using MyContext for current user
+import {Link} from "react-router-dom";
+import {Carousel} from 'react-bootstrap';
+import {MyContext} from "../../MyContext"; // Assuming you're using MyContext for current user
 
 export default function FeaturedBlog() {
     const [posts, setPosts] = useState([]);
-    const { currentUser } = useContext(MyContext); // Getting current user context
+    const {currentUser} = useContext(MyContext); // Getting current user context
 
     // Fetch posts data
     useEffect(() => {
@@ -25,11 +25,14 @@ export default function FeaturedBlog() {
     }, []);
 
     // Filter featured posts based on the status and current user
-    const featuredPosts = posts.filter(post => {
-        const isPublic = post.status === 'public';
-        const isUserBlog = currentUser && currentUser.data && post.username === currentUser.data.username;
-        return post.type === 'featured' && (isPublic || isUserBlog);
-    });
+    const featuredPosts = posts
+        .filter(post => {
+            const isPublic = post.status === 'public';
+            const isUserBlog = currentUser && currentUser.data && post.username === currentUser.data.username;
+            return post.type === 'featured' && (isPublic || isUserBlog);
+        })
+        .sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
+        .slice(0, 3);
 
     return (
         <>

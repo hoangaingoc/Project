@@ -35,7 +35,7 @@ export default function NavBar() {
                     </div>
 
                     {!currentUser?.data ? (
-                        <Link to={"/login"}>Login
+                        <Link to={"/login"}>Đăng nhập
                             <i className="fas fa-user-alt mr-lg-3" style={{fontSize: "16px", padding:"8px"}}></i>
                         </Link>
                     ) : (

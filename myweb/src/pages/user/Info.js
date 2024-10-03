@@ -14,6 +14,8 @@ export default function Info() {
     const [loading, setLoading] = useState(false); // Trạng thái loading
     const [error, setError] = useState(null); // Trạng thái lỗi
     const [previewImage, setPreviewImage] = useState(null); // Để lưu ảnh xem trước
+    const defaultAvatar = 'https://res.cloudinary.com/hoangaingoc/image/upload/v1727143704/co-4-la-may-man-avatar-dep-18_pddawy.jpg';
+
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -77,7 +79,7 @@ export default function Info() {
                 <div className="d-flex">
                     <div className="card" style={{width: "18rem"}}>
                         <div style={{position: "relative", display: "inline-block;"}}>
-                            <img src={info.image} className="card-img-top" style={{borderRadius:"50%"}} alt="Avatar"/>
+                            <img src={info.image || defaultAvatar} className="card-img-top" style={{borderRadius:"50%"}} alt="Avatar"/>
                             <i className='far fa-edit'
                                style={{
                                    cursor: "pointer",
@@ -133,7 +135,7 @@ export default function Info() {
                                 {previewImage ? (
                                     <img src={previewImage} alt="Preview" style={{ width: '100px', height: '100px', borderRadius: '50%', marginTop: '10px' }} />
                                 ) : (
-                                    <img src={info.image} alt="Avatar" style={{ width: '100px', height: '100px', borderRadius: '50%', marginTop: '10px' }} />
+                                    <img src={info.image || defaultAvatar} alt="Avatar" style={{ width: '100px', height: '100px', borderRadius: '50%', marginTop: '10px' }} />
                                 )}
                                 <button type="submit" className="btn btn-success btn-sm mt-2">
                                     {loading ? "Đang cập nhật..." : "Lưu"}

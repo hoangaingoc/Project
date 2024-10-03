@@ -1,4 +1,3 @@
-
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {MyContext} from "../../MyContext";
@@ -39,7 +38,9 @@ export default function useFilter () {
             const isUserBlog = currentUser && currentUser.data && item.username === currentUser.data.username;
 
             const matchesStatus = isUserBlog ? true : item.status === filters.status;
-            const matchesUsername = filters.username ? item.username === filters.username : true;
+            const matchesUsername = filters.username
+                ? item.username.toLowerCase() === filters.username.toLowerCase()
+                : true;
             const matchesType = filters.type ? item.type === filters.type : true;
             const matchesContent = filters.content ? item.content.includes(filters.content) : true;
 
@@ -51,9 +52,5 @@ export default function useFilter () {
         });
     };
 
-
-
     return { filters, handleChange, applyFilters };
 };
-
-
